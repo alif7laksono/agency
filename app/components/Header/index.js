@@ -22,7 +22,7 @@ const sideMenuItems = [
   { name: "Get Started", link: "/get-started", isButton: true },
 ];
 
-export default function index() {
+export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);

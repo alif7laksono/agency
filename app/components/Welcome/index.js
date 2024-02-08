@@ -10,7 +10,7 @@ export default function Welcome() {
       <p className="text-lg text-center md:w-2/3 w-full px-6 md:px-0 mx-auto mt-4 md:mt-6 text-gray-600">
         As pioneers in the realm of <span className="text-sky-500">design</span>
         , <span className="text-sky-500">branding</span>, and{" "}
-        <span className="text-sky-500">digital innovation</span>, we're
+        <span className="text-sky-500">digital innovation</span>, we&rsquo;re
         dedicated to bringing your vision to life in the most captivating and
         impactful way possible.
       </p>

@@ -10,8 +10,8 @@ export default function Blog() {
           Welcome to Our Blog
         </h1>
         <p className="text-lg md:text-lg leading-loose text-gray-600">
-          Whether you're seeking inspiration, information, or just a good read,
-          you've come to the right place. Our blog is filled with insightful
+          Whether you&apos;re seeking inspiration, information, or just a good read,
+          you&apos;ve come to the right place. Our blog is filled with insightful
           posts crafted to spark your curiosity and ignite your imagination.
         </p>
       </div>

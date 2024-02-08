@@ -60,7 +60,7 @@ export default function Testimonials() {
         Our Happy Customers
       </h1>
       <p className="text-lg text-gray-600 text-center mb-6">
-        We are grateful for the kind words from our customers. Here's what they
+        We are grateful for the kind words from our customers. Here&rsquo;s what they
         have to say:
       </p>
       <Slider ref={sliderRef} {...settings}>
