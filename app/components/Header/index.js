@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import LoginPopup from "../LoginPopUp";
+import ContactPopup from "../ContactPopUp";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { Link as ScrollLink } from "react-scroll";
 
@@ -26,6 +27,11 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isContactOpen, setIsContactOpen] = useState(false);
+
+  const openContact = () => {
+    setIsContactOpen(true);
+  };
 
   useEffect(() => {
     const onScroll = () => {
@@ -37,6 +43,7 @@ export default function Header() {
       window.removeEventListener("scroll", onScroll);
     };
   }, []);
+
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -109,11 +116,15 @@ export default function Header() {
           </button>
           <button
             className="bg-transparent font-bold py-2 px-4 lg:px-2 xl:px-4 hover:text-sky-500"
-            onClick={openLogin}
+            onClick={openContact}
           >
             Get Started
           </button>
           {isLoginOpen && <LoginPopup onClose={closeLogin} />}
+          <ContactPopup
+            isOpen={isContactOpen}
+            onClose={() => setIsContactOpen(false)}
+          />
         </div>
         {isOpen && (
           <div className="sm:hidden fixed top-16 left-0 w-full transition-all duration-500 ease-in-out transform translate-x-0 bg-gradient-to-b from-sky-100 to-white h-full z-50">

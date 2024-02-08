@@ -18,7 +18,7 @@ export default function Testimonials() {
     slidesToShow: 1, // Display one testimonial at a time on big screens
     slidesToScroll: 1,
     autoplay: true, // Slide automatically
-    autoplaySpeed: 3000, // Slide every 3 seconds
+    autoplaySpeed: 2000, // Slide every 3 seconds
     responsive: [
       // Adjust the style on medium and small screens
       {
