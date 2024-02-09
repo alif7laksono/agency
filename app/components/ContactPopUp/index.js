@@ -11,7 +11,7 @@ function ContactPopup({ isOpen, onClose }) {
       <div className="bg-white p-12 rounded-lg shadow-2xl z-10 relative max-w-3xl m-4">
         <h2 className="text-3xl font-semibold mb-8 text-center">Contact Us</h2>
         <p className="text-center text-gray-500 mb-8">
-          We're here to help! Send us a message and we'll get back to you as
+          We&lsquo;re here to help! Send us a message and we&lsquo;ll get back to you as
           soon as possible.
         </p>
         <div className="flex justify-between mb-8 space-x-4">
