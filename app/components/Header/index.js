@@ -15,10 +15,10 @@ const menuItems = [
 ];
 
 const sideMenuItems = [
-  { name: "home", link: "/home" },
-  { name: "Services", link: "/services" },
-  { name: "features", link: "/features" },
-  { name: "news", link: "/news" },
+  { name: "home", link: "/" },
+  { name: "services", link: "/services" },
+  { name: "testimonials", link: "/testimonials" },
+  { name: "blog", link: "/blog" },
   { name: "Login", link: "/login", isButton: true },
   { name: "Get Started", link: "/get-started", isButton: true },
 ];
@@ -28,6 +28,7 @@ export default function Header() {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isContactOpen, setIsContactOpen] = useState(false);
+  const [activeLink, setActiveLink] = useState("");
 
   const openContact = () => {
     setIsContactOpen(true);
@@ -80,7 +81,10 @@ export default function Header() {
                     to={item.link}
                     smooth={true}
                     duration={500}
-                    className="cursor-pointer text-base hover:text-sky-500 transition-all duration-200 ease-in-out"
+                    className={`cursor-pointer text-base transition-all duration-200 ease-in-out ${
+                      activeLink === item.link ? "text-sky-500" : ""
+                    }`}
+                    onClick={() => setActiveLink(item.link)}
                   >
                     {item.name}
                   </ScrollLink>
@@ -134,14 +138,30 @@ export default function Header() {
                     key={item.name}
                     className="bg-transparent font-bold text-left hover:text-sky-500 transition-all duration-200 ease-in-out cursor-pointer"
                   >
-                    <Link href={item.link}>{item.name}</Link>
+                    <ScrollLink
+                      to={item.link}
+                      smooth={true}
+                      duration={500}
+                      onClick={() => setIsOpen(false)}
+                      activeClass="text-sky-500"
+                    >
+                      {item.name}
+                    </ScrollLink>
                   </button>
                 ) : (
                   <li
                     key={item.name}
                     className="hover:text-sky-500 transition-all duration-200 ease-in-out cursor-pointer font-semibold text-base"
                   >
-                    <Link href={item.link}>{item.name}</Link>
+                    <ScrollLink
+                      to={item.link}
+                      smooth={true}
+                      duration={500}
+                      onClick={() => setIsOpen(false)}
+                      activeClass="text-sky-500"
+                    >
+                      {item.name}
+                    </ScrollLink>
                   </li>
                 )
               )}
