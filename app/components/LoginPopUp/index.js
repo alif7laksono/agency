@@ -22,22 +22,22 @@ export default function LoginPopUp({ isOpen, closeModal }) {
       overlayClassName="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
     >
       <div className="flex justify-center mb-4">
-        <button
+        <span
           onClick={switchToLogin}
-          className={`mr-2 p-2 rounded-md ${
-            isRegister ? "bg-gray-500" : "bg-sky-500"
-          } text-white`}
+          className={`mr-2 p-2 cursor-pointer text-xl font-semibold ${
+            isRegister ? "text-gray-500" : "text-sky-500"
+          }`}
         >
           Log In
-        </button>
-        <button
+        </span>
+        <span
           onClick={switchToRegister}
-          className={`ml-2 p-2 rounded-md ${
-            isRegister ? "bg-sky-500" : "bg-gray-500"
-          } text-white`}
+          className={`ml-2 p-2 cursor-pointer text-lg font-semibold ${
+            isRegister ? "text-sky-500" : "text-gray-500"
+          }`}
         >
           Register
-        </button>
+        </span>
       </div>
       <div className="w-full max-w-lg mx-auto">
         {isRegister ? (
@@ -73,7 +73,7 @@ export default function LoginPopUp({ isOpen, closeModal }) {
                 onClick={switchToLogin}
                 className="text-gray-500 hover:text-gray-400"
               >
-                Don't have an account? Register
+                Already have an account? <span className="text-sky-500">Login</span>
               </button>
             </div>
           </>
@@ -105,7 +105,7 @@ export default function LoginPopUp({ isOpen, closeModal }) {
                 onClick={switchToRegister}
                 className="text-gray-500 hover:text-gray-400"
               >
-                Don't have an account? Register
+                Don&lsquo;t have an account? <span className="text-sky-500">Register</span>
               </button>
             </div>
           </>

@@ -1,6 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
+import ContactPopup from "../ContactPopUp";
 
 export default function Welcome() {
+  const [isContactOpen, setIsContactOpen] = useState(false);
+
+  const openContact = () => {
+    setIsContactOpen(true);
+    event.preventDefault();
+  };
+
   return (
     <div className="mx-auto items-center xl:w-3/4 lg:w-full lg:px-10 md:w-4/5 sm:w-4/5 w-full px-0 md:px-2 md:mt-24 mt-12">
       <h1 className="leading-normal md:leading-snug text-2xl md:text-5xl text-gray-900 font-bold capitalize text-center md:w-3/4 w-full px-6 md:px-0 mx-auto">
@@ -16,7 +24,8 @@ export default function Welcome() {
       </p>
       <form className="flex flex-row items-center justify-between w-full max-w-lg mx-auto p-5 rounded-lg mt-4 md:mt-6">
         <button
-          type="submit"
+          type="button"
+          onClick={openContact}
           className="w-1/3 p-4 text-white text-xs lg:text-base bg-gray-900 hover:bg-opacity-90 rounded-lg focus:outline-none focus:bg-skt-500 md:mr-4 mr-2"
         >
           Get Started
@@ -27,6 +36,10 @@ export default function Welcome() {
           className="w-3/4 p-4 text-gray-500 border text-xs lg:text-base border-gray-200 rounded-md focus:outline-none focus:border-sky-500"
         />
       </form>
+      <ContactPopup
+        isOpen={isContactOpen}
+        onClose={() => setIsContactOpen(false)}
+      />
     </div>
   );
 }
