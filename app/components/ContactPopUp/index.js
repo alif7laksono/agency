@@ -1,5 +1,7 @@
 "use client";
+import React from "react";
 import Image from "next/image";
+import Modal from "react-modal";
 
 function ContactPopup({ isOpen, onClose }) {
   if (!isOpen) {
@@ -7,8 +9,18 @@ function ContactPopup({ isOpen, onClose }) {
   }
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center z-50">
+    <Modal
+      isOpen={isOpen}
+      onClose={onClose}
+      className="fixed inset-0 flex items-center justify-center z-50"
+    >
       <div className="bg-white p-12 rounded-lg shadow-2xl z-10 relative max-w-3xl m-4">
+        <button
+          onClick={onClose}
+          className="absolute top-0 right-0 m-4 text-gray-500 hover:text-red-700"
+        >
+          X
+        </button>
         <h2 className="text-3xl font-semibold mb-8 text-center">Contact Us</h2>
         <p className="text-center text-gray-500 mb-8">
           We&lsquo;re here to help! Send us a message and we&lsquo;ll get back
@@ -40,31 +52,17 @@ function ContactPopup({ isOpen, onClose }) {
               className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500"
             />
             <button className="w-full p-2 bg-black text-white rounded-md hover:bg-gray-700 transition-all duration-200 ease-in-out">
-              Register
+              Send Message
             </button>
           </div>
         </div>
-        <div className="flex justify-center items-center">
-          <button
-            type="submit"
-            className="bg-sky-500 hover:bg-sky-400 text-white font-bold py-3 px-6 rounded mr-2 text-lg"
-          >
-            Submit
-          </button>
-          <button
-            type="button"
-            onClick={onClose}
-            className="text-white bg-gray-500 hover:bg-gray-700 py-3 px-6 rounded text-lg"
-          >
-            Close
-          </button>
-        </div>
       </div>
+      <div className="fixed inset-0 bg-black opacity-50"></div>
       <div
-        className="bg-black bg-opacity-50 absolute inset-0"
+        className="fixed inset-0 bg-black opacity-50"
         onClick={onClose}
       ></div>
-    </div>
+    </Modal>
   );
 }
 

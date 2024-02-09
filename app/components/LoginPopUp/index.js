@@ -1,113 +1,122 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { FaGoogle } from "react-icons/fa";
+import React, { useState } from "react";
+import Modal from "react-modal";
 
-export default function LoginPopup({ onClose }) {
-  const ref = useRef();
+export default function LoginPopUp({ isOpen, closeModal }) {
   const [isRegister, setIsRegister] = useState(false);
 
-  useEffect(() => {
-    function handleClickOutside(event) {
-      if (ref.current && !ref.current.contains(event.target)) {
-        onClose();
-      }
-    }
+  function switchToRegister() {
+    setIsRegister(true);
+  }
 
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [onClose]);
+  function switchToLogin() {
+    setIsRegister(false);
+  }
 
   return (
-    <div className="fixed inset-0 bg-opacity-50 bg-black flex items-center justify-center z-20">
-      <div ref={ref} className="bg-white p-8 rounded-lg shadow-lg w-1/2">
-        <div className="flex">
-          <div className="w-1/2">
-            <Image
-              src="/images/login.svg"
-              width={620}
-              height={1000}
-              alt="Login"
-            />
-          </div>
-          <div className="w-1/2 space-y-4">
-            <div>
-              <div>
-                <Image src="/vercel.svg" width={200} height={800} alt="Logo" />
-                <div className="flex justify-start space-x-4 mt-4">
-                  <button onClick={() => setIsRegister(false)}>
-                    <h2 className={!isRegister ? "text-sky-500" : ""}>Login</h2>
-                  </button>
-                  <button onClick={() => setIsRegister(true)}>
-                    <h2 className={isRegister ? "text-sky-500" : ""}>
-                      Register
-                    </h2>
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className="space-y-4">
-              <p className="text-gray-600">
-                Welcome back! Please login to your account.
-              </p>
-              <button className="flex items-center justify-center space-x-2 bg-white border border-gray-300 text-gray-600 rounded-md px-4 py-2 hover:bg-gray-100 transition-all duration-200 ease-in-out">
-                <FaGoogle />
-                <span>Sign in with Google</span>
+    <Modal
+      isOpen={isOpen}
+      onRequestClose={closeModal}
+      contentLabel="Log In / Register"
+      className="bg-white p-6 rounded-lg shadow-2xl z-10 relative lg:w-1/2 w-3/4 m-4"
+      overlayClassName="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
+    >
+      <div className="flex justify-center mb-4">
+        <button
+          onClick={switchToLogin}
+          className={`mr-2 p-2 rounded-md ${
+            isRegister ? "bg-gray-500" : "bg-sky-500"
+          } text-white`}
+        >
+          Log In
+        </button>
+        <button
+          onClick={switchToRegister}
+          className={`ml-2 p-2 rounded-md ${
+            isRegister ? "bg-sky-500" : "bg-gray-500"
+          } text-white`}
+        >
+          Register
+        </button>
+      </div>
+      <div className="w-full max-w-lg mx-auto">
+        {isRegister ? (
+          <>
+            <p className="text-center text-gray-500 mb-4">
+              Create a new account to access all our cool features.
+            </p>
+            <form>
+              <input
+                type="text"
+                placeholder="Username"
+                className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500 mb-4"
+              />
+              <input
+                type="email"
+                placeholder="Email"
+                className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500 mb-4"
+              />
+              <input
+                type="password"
+                placeholder="Password"
+                className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500 mb-4"
+              />
+              <button
+                type="submit"
+                className="w-full p-2 bg-black text-white rounded-md hover:bg-gray-700 transition-all duration-200 ease-in-out"
+              >
+                Register
+              </button>
+            </form>
+            <div className="flex justify-center mt-4">
+              <button
+                onClick={switchToLogin}
+                className="text-gray-500 hover:text-gray-400"
+              >
+                Don't have an account? Register
               </button>
             </div>
-            {!isRegister ? (
-              <div className="space-y-4">
-                <input
-                  type="email"
-                  placeholder="Email"
-                  className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500"
-                />
-                <input
-                  type="password"
-                  placeholder="Password"
-                  className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500"
-                />
-                <div className="flex items-center">
-                  <input type="checkbox" id="remember" className="mr-2" />
-                  <label htmlFor="remember" className="text-sm text-gray-600">
-                    Remember me
-                  </label>
-                </div>
-                <button className="w-full p-2 bg-black text-white rounded-md hover:bg-gray-700 transition-all duration-200 ease-in-out">
-                  Login
-                </button>
-                <Link href="/forgot-password" className="text-sm text-sky-500">
-                  Forgot password?
-                </Link>
-              </div>
-            ) : (
-              <div className="space-y-4">
-                <input
-                  type="text"
-                  placeholder="Username"
-                  className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500"
-                />
-                <input
-                  type="email"
-                  placeholder="Email"
-                  className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500"
-                />
-                <input
-                  type="password"
-                  placeholder="Password"
-                  className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500"
-                />
-                <button className="w-full p-2 bg-black text-white rounded-md hover:bg-gray-700 transition-all duration-200 ease-in-out">
-                  Register
-                </button>
-              </div>
-            )}
-          </div>
-        </div>
+          </>
+        ) : (
+          <>
+            <p className="text-center text-gray-500 mb-4">
+              Welcome back! Log in to continue.
+            </p>
+            <form className="w-full">
+              <input
+                type="text"
+                placeholder="Username"
+                className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500 mb-4"
+              />
+              <input
+                type="password"
+                placeholder="Password"
+                className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500 mb-4"
+              />
+              <button
+                type="submit"
+                className="w-full p-2 bg-black text-white rounded-md hover:bg-gray-700 transition-all duration-200 ease-in-out"
+              >
+                Log In
+              </button>
+            </form>
+            <div className="flex justify-center mt-4">
+              <button
+                onClick={switchToRegister}
+                className="text-gray-500 hover:text-gray-400"
+              >
+                Don't have an account? Register
+              </button>
+            </div>
+          </>
+        )}
       </div>
-    </div>
+      <button
+        onClick={closeModal}
+        className="absolute top-0 right-0 m-4 text-gray-500 hover:text-red-700"
+      >
+        X
+      </button>
+    </Modal>
   );
 }

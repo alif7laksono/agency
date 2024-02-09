@@ -17,14 +17,14 @@ export default function Welcome() {
       <form className="flex flex-row items-center justify-between w-full max-w-lg mx-auto p-5 rounded-lg mt-4 md:mt-6">
         <button
           type="submit"
-          className="w-1/3 p-4 text-white text-sm bg-gray-900 hover:bg-opacity-90 rounded-lg focus:outline-none focus:bg-skt-500 md:mr-4 mr-2"
+          className="w-1/3 p-4 text-white text-xs lg:text-base bg-gray-900 hover:bg-opacity-90 rounded-lg focus:outline-none focus:bg-skt-500 md:mr-4 mr-2"
         >
           Get Started
         </button>
         <input
           type="email"
           placeholder="Enter your email"
-          className="w-3/4 p-4 text-gray-500 border border-gray-200 rounded-md focus:outline-none focus:border-sky-500"
+          className="w-3/4 p-4 text-gray-500 border text-xs lg:text-base border-gray-200 rounded-md focus:outline-none focus:border-sky-500"
         />
       </form>
     </div>
