@@ -8,38 +8,41 @@ import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
+var settings = {
+  dots: false, // Remove the dots
+  infinite: true,
+  speed: 500,
+  slidesToShow: 1, // Display one testimonial at a time on big screens
+  slidesToScroll: 1,
+  autoplay: true, // Slide automatically
+  autoplaySpeed: 2000, // Slide every 3 seconds
+  responsive: [
+    // Adjust the style on medium and small screens
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: false, // Remove the dots
+      },
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        initialSlide: 1,
+      },
+    },
+  ],
+};
+
 export default function Testimonials() {
   const sliderRef = useRef();
 
-  var settings = {
-    dots: false, // Remove the dots
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1, // Display one testimonial at a time on big screens
-    slidesToScroll: 1,
-    autoplay: true, // Slide automatically
-    autoplaySpeed: 2000, // Slide every 3 seconds
-    responsive: [
-      // Adjust the style on medium and small screens
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: false, // Remove the dots
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          initialSlide: 1,
-        },
-      },
-    ],
-
+  const newSettings = {
+    ...settings,
     nextArrow: (
       <FontAwesomeIcon
         icon={faArrowRight}
@@ -60,8 +63,8 @@ export default function Testimonials() {
         Our Happy Customers
       </h1>
       <p className="text-lg text-gray-600 text-center mb-6">
-        We are grateful for the kind words from our customers. Here&rsquo;s what they
-        have to say:
+        We are grateful for the kind words from our customers. Here&rsquo;s what
+        they have to say:
       </p>
       <Slider ref={sliderRef} {...settings}>
         {TestimonialsData.map((testimonial) => (

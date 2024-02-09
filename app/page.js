@@ -11,7 +11,10 @@ import { FaArrowUp } from "react-icons/fa";
 
 export default function Home() {
   return (
-    <div id="top" className="bg-gradient-to-b from-sky-100 to-white h-full">
+    <div
+      id="/"
+      className="bg-gradient-to-b from-sky-100 to-white h-full scroll-smooth"
+    >
       <Header />
       <Welcome />
       <div id="/testimonials">
@@ -25,7 +28,7 @@ export default function Home() {
       </div>
       <Footer />
       <ScrollLink
-        to="top"
+        to="/"
         smooth={true}
         className="fixed bottom-4 right-4 px-2 py-1 rounded-full flex items-center justify-center cursor-pointer hover:text-gray-700"
       >

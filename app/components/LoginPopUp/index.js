@@ -39,10 +39,12 @@ export default function LoginPopup({ onClose }) {
                 <Image src="/vercel.svg" width={200} height={800} alt="Logo" />
                 <div className="flex justify-start space-x-4 mt-4">
                   <button onClick={() => setIsRegister(false)}>
-                    <h2>Login</h2>
+                    <h2 className={!isRegister ? "text-sky-500" : ""}>Login</h2>
                   </button>
                   <button onClick={() => setIsRegister(true)}>
-                    <h2>Register</h2>
+                    <h2 className={isRegister ? "text-sky-500" : ""}>
+                      Register
+                    </h2>
                   </button>
                 </div>
               </div>

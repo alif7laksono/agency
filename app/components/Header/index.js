@@ -64,15 +64,30 @@ export default function Header() {
     >
       <div className="flex flex-col sm:flex-row justify-between mx-auto items-center xl:w-3/4 lg:w-full lg:px-10 md:w-4/5 sm:w-4/5 w-full px-0 md:px-2 py-4">
         <div className="flex justify-between items-center sm:justify-start">
-          <Link href="/">
-            <Image
-              src="/vercel.svg"
-              alt="image logo"
-              width={200}
-              height={50}
-              className="w-1/2 sm:w-3/4 md:w-1/2 lg:w-1/3 xl:w-1/4 cursor-pointer"
-            />
-          </Link>
+          <Image
+            src="/vercel.svg"
+            alt="image logo"
+            width={200}
+            height={50}
+            className="w-1/2 sm:w-3/4 md:w-1/2 lg:w-1/3 xl:w-1/5 cursor-pointer"
+          />
+
+          <div className="ml-4 hidden md:hidden lg:flex xl:flex">
+            <ul className="flex space-x-8 capitalize md:ml-10 lg:ml-10 xl:ml-10 ml-2">
+              {menuItems.map((item, index) => (
+                <li key={index}>
+                  <ScrollLink
+                    to={item.link}
+                    smooth={true}
+                    duration={500}
+                    className="cursor-pointer text-base hover:text-sky-500 transition-all duration-200 ease-in-out"
+                  >
+                    {item.name}
+                  </ScrollLink>
+                </li>
+              ))}
+            </ul>
+          </div>
           <div className="sm:hidden">
             {!isOpen ? (
               <div
@@ -89,22 +104,6 @@ export default function Header() {
                 <FaTimes />
               </div>
             )}
-          </div>
-          <div className="ml-4 hidden md:hidden lg:flex xl:flex">
-            <ul className="flex space-x-8 capitalize md:ml-10 lg:ml-10 xl:ml-10 ml-2">
-              {menuItems.map((item, index) => (
-                <li key={index}>
-                  <ScrollLink
-                    to={item.link}
-                    smooth={true}
-                    duration={500}
-                    className="cursor-pointer text-base hover:text-sky-500 transition-all duration-200 ease-in-out"
-                  >
-                    {item.name}
-                  </ScrollLink>
-                </li>
-              ))}
-            </ul>
           </div>
         </div>
         <div className="hidden xl:flex md:flex sm:flex space-x-4 lg:space-x-2 md:space-x-2">
