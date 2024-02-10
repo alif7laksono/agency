@@ -30,9 +30,9 @@ export default function Home() {
       <ScrollLink
         to="/"
         smooth={true}
-        className="fixed bottom-4 right-4 px-2 py-1 rounded-full flex items-center justify-center cursor-pointer hover:text-gray-700"
+        className="fixed bottom-4 right-4 px-2 py-1 rounded-full flex items-center justify-center cursor-pointer hover:text-gray-400"
       >
-        <FaArrowUp className="mr-2" /> Back to Top
+        <FaArrowUp className="mr-2 text-gray-5000" /> Back to Top
       </ScrollLink>
     </div>
   );
